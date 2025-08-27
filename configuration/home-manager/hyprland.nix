@@ -100,13 +100,8 @@ in
             "ALT, F4, killactive"
             "CTRL_ALT_SHIFT, right, pin"
             "SUPER, bracketright, fullscreen, 1"
-            # "SUPER_SHIFT, bracketright, fakefullscreen"
             ", XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             "SHIFT, XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ];
-          bindl = [
-            ", switch:on:2a29c40, exec, hyprctl keyword monitor \"eDP-2, disable\""
-            ", switch:off:2a29c40, exec, hyprctl keyword monitor \"eDP-2, 2560x1600@120, 0x0, 1\""
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"
@@ -115,24 +110,17 @@ in
           binde = [
             ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%-"
             ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+"
-            ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -d $(${pkgs.brightnessctl}/bin/brightnessctl -l -c backlight -m | cut -f 1 -d \",\") s 1%-"
-            ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -d $(${pkgs.brightnessctl}/bin/brightnessctl -l -c backlight -m | cut -f 1 -d \",\") s 1%+"
           ];
           env = [];
-          monitor = [
-            ", highres, auto, 1"
-          ];
-          exec-once = 
-          let
-            algo = "ed25519";
-          in [
+          # monitor = [
+          #   ", 1920x1080@60, auto, 1"
+          # ];
+          exec-once = [
             "${pkgs.kitty}/bin/kitty"
             "${pkgs.dunst}/bin/dunst"
             "${pkgs.hyprpaper}/bin/hyprpaper"
-            # "${pkgs.networkmanagerapplet}/bin/nm-applet --indicatior"
             "${pkgs.waybar}/bin/waybar"
             "${pkgs.hypridle}/bin/hypridle"
-            "${pkgs.blueman}/bin/blueman-tray"
             "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
             "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
           ];
@@ -160,14 +148,11 @@ in
             "col.nogroup_border" = "0x44dd7777";
             "col.nogroup_border_active" = "0x55dd7777";
             layout = "dwindle";
-            # layout = "hy3";
             no_focus_fallback = false;
             resize_on_border = true;
             extend_border_grab_area = 15;
             hover_icon_on_border = true;
             allow_tearing = false;
-            # no_cursor_warps = true;
-            # cursor_inactive_timeout = 10;
           };
           cursor = {
             inactive_timeout = 10;
@@ -220,9 +205,7 @@ in
             "windows,1,1,default"
           ];
           input = {
-            # kb_model = "pc104";
             kb_layout = "us";
-            # kb_variant = "qwerty";
             kb_options = "compose:ralt";
             numlock_by_default = false;
             repeat_rate = 25;
@@ -231,8 +214,6 @@ in
             accel_profile = "flat";
             force_no_accel = false;
             left_handed = false;
-            # scroll_method = "2fg";
-            scroll_method = "on_button_down";
             scroll_button = 273;
             scroll_button_lock = false;
             natural_scroll = false;
@@ -273,7 +254,6 @@ in
             workspace_swipe_direction_lock = true;
             workspace_swipe_direction_lock_threshold = 20;
             workspace_swipe_forever = true;
-            # workspace_swipe_numbered = false;
           };
           group = {
             insert_after_current = true;

@@ -1,3 +1,5 @@
 result
 out
 *.qcow2
+tmp
+*.fd

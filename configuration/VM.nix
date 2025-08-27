@@ -15,13 +15,10 @@
         graphics = true;
       };
       virtualisation.qemu.options = [
-        "-device virtio-vga-pci"
+        "-device virtio-gpu"
+        "-vga virtio"
         # "-display sdl,gl=on,show-cursor=off"
-        "-vga none"
-        "-device qxl-vga"
-        "-display none"
-        "-spice port=5900,addr=127.0.0.1,disable-ticketing"
-        "-chardev spicevmc,id=charchannel0,name=vdagent"
+        # "-vga none"
         # Wire up pipewire audio
         "-audiodev pipewire,id=audio0"
         "-device intel-hda"
@@ -31,6 +28,5 @@
   };
   environment.sessionVariables = lib.mkVMOverride {
     WLR_NO_HARDWARE_CURSORS = "1";
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
   };
 }

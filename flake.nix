@@ -67,6 +67,11 @@
         ));
       };
       apps = rec {
+        VM = {
+          type = "app";
+          program = ./nix/runVM.sh;
+        };
+        default = VM;
       };
     });
   in
