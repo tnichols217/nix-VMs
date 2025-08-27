@@ -1,0 +1,155 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748366181,
+        "narHash": "sha256-0ulQ4W4FrtEG2++0YOtcbErUPJlbPptaxJZAlM5jHfM=",
+        "owner": "tnichols217",
+        "repo": "home-manager",
+        "rev": "15ef0efca43cc913cf9f4ce4afdbfb6b6fed459b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tnichols217",
+        "ref": "forceFlakes",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "kitty-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1642593129,
+        "narHash": "sha256-RcDmZ1fbNX18+X3xCqqdRbD+XYPsgNte1IXUNt6CxIA=",
+        "owner": "dexpota",
+        "repo": "kitty-themes",
+        "rev": "b1abdd54ba655ef34f75a568d78625981bf1722c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dexpota",
+        "repo": "kitty-themes",
+        "type": "github"
+      }
+    },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756008611,
+        "narHash": "sha256-rfTBWuTXi9/X7GhtF562FKNXKh2kvKb6dwI5lV1SjPE=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "52dec1cb33a614accb9e01307e17816be974d24d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1756125398,
+        "narHash": "sha256-XexyKZpf46cMiO5Vbj+dWSAXOnr285GHsMch8FBoHbc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3b9f00d7a7bf68acd4c4abb9d43695afb04e03a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "p10k": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745931653,
+        "narHash": "sha256-BRJyGn+gTGUWifpJ1ziBKVHACcWw+R5N/HdUi8HzSvY=",
+        "owner": "romkatv",
+        "repo": "powerlevel10k",
+        "rev": "36f3045d69d1ba402db09d09eb12b42eebe0fa3b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "romkatv",
+        "repo": "powerlevel10k",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "home-manager": "home-manager",
+        "kitty-themes": "kitty-themes",
+        "nix-index-database": "nix-index-database",
+        "nixpkgs": "nixpkgs",
+        "p10k": "p10k",
+        "zlong_alert": "zlong_alert"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "zlong_alert": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1676145490,
+        "narHash": "sha256-liwaOzv70igaJy9bEom2ntu/x64BitjLxvuMUcgajVw=",
+        "owner": "kevinywlui",
+        "repo": "zlong_alert.zsh",
+        "rev": "8df5b6808bba4bf896f6765cca28b5705a048bad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kevinywlui",
+        "repo": "zlong_alert.zsh",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
