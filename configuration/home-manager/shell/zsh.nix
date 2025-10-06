@@ -1,53 +1,31 @@
-{ pkgs, version, lib, nix-index-database, inputs, ... }:
+{ pkgs, username, host-name, version, lib, nix-index-database, inputs, ... }:
 {
   home-manager.users.user = {
     programs = {
       zsh = {
-        initExtraBeforeCompInit = ''
-          P10K_INSTANT_PROMPT="$XDG_CACHE_HOME/p10k-instant-prompt-''${(%):-%n}.zsh"
-          [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
-        '';
         enable = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
         autocd = true;
-        # this line breaks my entire config for some reason
-        # dotDir = ".config/zsh";
         dirHashes = {
           docs  = "$HOME/Documents";
           pr  = "$HOME/Documents/projects";
+          note = "$HOME/Documents/obsidian/notes";
         };
-        oh-my-zsh = {
-          enable = true;
-        };
-        plugins = [
-          {
-            file = "powerlevel10k.zsh-theme";
-            name = "powerlevel10k";
-            src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k";
-          }
-          {
-            file = "zlong_alert.zsh";
-            name = "zlong-alert";
-            src = "${inputs.zlong_alert}";
-          }
-          {
-            file = "p10k.zsh";
-            name = "powerlevel10k-config";
-            src = ./zsh;
-          }
-        ];
         history = {
           share = false;
         };
-        initExtra = let
+        initContent = let
         functions = {
           gc = "git clone git@github.com:tnichols217/$argv";
           gacp = "git add -A && git commit --allow-empty -am $argv; git push";
           unpersist = "TEMPFILE=$(mktemp); cp $argv $TEMPFILE; rm $argv; cp $TEMPFILE $argv; rm $TEMPFILE";
           gm = "CURBRANCH=$(git branch --show-current); git checkout $argv; git merge $CURBRANCH; git push; git checkout $CURBRANCH";
         };
-        in builtins.concatStringsSep " " (lib.attrsets.mapAttrsToList (name: value: "${name}() {${value}};") functions) ;
+        in builtins.concatStringsSep " " ((lib.attrsets.mapAttrsToList (name: value: "${name}() {${value}};") functions) ++ [
+          ''bindkey "^[[1;5C" forward-word;''
+          ''bindkey "^[[1;5D" backward-word;''
+        ]) ;
         shellAliases = {
           clip = "tee >(xclip -selection clipboard -r) >(wl-copy) >/dev/null | echo";
           gac = "git add -A && git commit -am ";
@@ -57,6 +35,7 @@
           "..." = "cd ../..";
           "...." = "cd ../../..";
           cdg = "cd $(git rev-parse --show-toplevel)";
+          upg = "sudo bash -c \"cd /etc/nixos; git stash; git stash clear; git pull; nixos-rebuild switch --flake \\\".#${host-name}\\\" $argv\"";
           sci = "ssh-copy-id -i ~/.ssh/ed25519 ";
           pathof = "path resolve ";
           code = "codium";

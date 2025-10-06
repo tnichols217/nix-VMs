@@ -11,15 +11,12 @@
     vmVariant = {
       virtualisation = {
         memorySize = 16384;
-        cores = 4;
+        cores = 8;
         graphics = true;
       };
       virtualisation.qemu.options = [
         "-device virtio-gpu"
         "-vga virtio"
-        # "-display sdl,gl=on,show-cursor=off"
-        # "-vga none"
-        # Wire up pipewire audio
         "-audiodev pipewire,id=audio0"
         "-device intel-hda"
         "-device hda-output,audiodev=audio0"

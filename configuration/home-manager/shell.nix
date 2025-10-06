@@ -1,18 +1,19 @@
-{ pkgs, version, lib, nix-index-database, ... }:
+{ pkgs, username, host-name, version, lib, nix-index-database, ... }@ args:
 {
   imports = [
     ./shell/kitty.nix
     ./shell/comma.nix
     ./shell/zsh.nix
+    ./shell/starship.nix
   ];
 
-  users.users.user = {
+  users.users.${username} = {
     shell = pkgs.zsh;
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  home-manager.users.user = {
+  home-manager.users.${username} = {
     home = {
       packages = with pkgs; [
           bat
@@ -21,6 +22,7 @@
       ];
       shell = {
         enableShellIntegration = true;
+        enableNushellIntegration = true;
         enableFishIntegration = false;
       };
     };
@@ -39,12 +41,19 @@
           credential = {
             helper = "store";
           };
+          commit.gpgsign = true;
+          gpg.format = "ssh";
+          gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+          user.signingkey = "~/.ssh/ed25519.pub";
         };
       };
       gh = {
         enable = true;
         gitCredentialHelper.enable = true;
         settings.git_protocol = "ssh";
+      };
+      nushell = {
+        enable = true;
       };
       fzf = {
         enable = true;
