@@ -1,4 +1,4 @@
-{ pkgs, host-name, version, lib, nix-index-database, inputs, ... }:
+{ pkgs, version, lib, nix-index-database, inputs, ... }:
 {
   home-manager.users.user = {
     programs = {
@@ -35,7 +35,6 @@
           "..." = "cd ../..";
           "...." = "cd ../../..";
           cdg = "cd $(git rev-parse --show-toplevel)";
-          upg = "sudo bash -c \"cd /etc/nixos; git stash; git stash clear; git pull; nixos-rebuild switch --flake \\\".#${host-name}\\\" $argv\"";
           sci = "ssh-copy-id -i ~/.ssh/ed25519 ";
           pathof = "path resolve ";
           code = "codium";

@@ -1,4 +1,4 @@
-{ pkgs, host-name, version, lib, nix-index-database, ... }@ args:
+{ pkgs, version, lib, nix-index-database, ... }@ args:
 {
   imports = [
     ./shell/kitty.nix
