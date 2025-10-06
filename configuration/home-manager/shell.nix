@@ -1,4 +1,4 @@
-{ pkgs, username, host-name, version, lib, nix-index-database, ... }@ args:
+{ pkgs, host-name, version, lib, nix-index-database, ... }@ args:
 {
   imports = [
     ./shell/kitty.nix
@@ -7,13 +7,13 @@
     ./shell/starship.nix
   ];
 
-  users.users.${username} = {
+  users.users.user = {
     shell = pkgs.zsh;
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  home-manager.users.${username} = {
+  home-manager.users.user = {
     home = {
       packages = with pkgs; [
           bat
